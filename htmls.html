@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<title>AJAX call using javascript</title>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Contact Number</th>
+			</tr>
+		</thead>
+		<tbody id="tableData">
+			
+		</tbody>
+	</table>
+	
+	<script>
+		fetch("https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001")
+		.then((data)=>{
+			return data.json();
+
+		})
+		.then((u)=>{
+			if(u.length > 0){
+				var temp = "";
+				u.forEach((data1) => {
+					temp += "<tr>";
+					temp += "<td>" + data1.firstName + " " + data1.lastName + "</td>";
+					temp += "<td>" + data1.age + "</td>";
+					temp += "<td>" + data1.contactNumber + "</td></tr>";
+				})
+
+				document.getElementById("tableData").innerHTML = temp;
+			}
+		})
+	</script>
+</body>
+</html>
