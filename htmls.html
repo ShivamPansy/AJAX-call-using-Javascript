@@ -19,12 +19,14 @@
 	</table>
 	
 	<script>
+		//Here we have used AJAX API using fetch method of javascript.
 		fetch("https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001")
 		.then((data)=>{
 			return data.json();
 
 		})
 		.then((u)=>{
+			//After getting the data we add a row with three data and then add it to tbody.
 			if(u.length > 0){
 				var temp = "";
 				u.forEach((data1) => {
